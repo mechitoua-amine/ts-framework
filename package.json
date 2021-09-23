@@ -4,10 +4,17 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "start:db": "json-server -w db.json"
   },
   "devDependencies": {
     "typescript": "^4.3.2",
     "vite": "^2.5.4"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.4",
+    "global": "^4.4.0",
+    "json-server": "^0.16.3"
   }
 }
