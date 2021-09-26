@@ -1,13 +1,5 @@
-import { Collection } from "./models/Collection";
-import { User, UserProps } from "./models/User";
 import "./style.css";
+import { UserFrom } from "./views/UserForm";
 
-const collection = new Collection<User, UserProps>(
-  "http://localhost:3000/users",
-  (json: UserProps) => User.buildUser(json)
-);
-collection.on("change", () => {
-  console.log(collection);
-});
-
-collection.fetch();
+const userFrom = new UserFrom(document.getElementById("root"));
+userFrom.render();
