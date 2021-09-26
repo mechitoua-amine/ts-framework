@@ -1,6 +1,4 @@
-import { User } from './models/User'
-import './style.css'
+import { User } from './models/User';
+import './style.css';
 
-const user = new User({name: 'mehmet', age: 30})
-user.save()
-
+const user = new User({ name: 'mehmet', age: 30 });
