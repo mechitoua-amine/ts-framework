@@ -1,4 +1,6 @@
-import { User } from './models/User';
-import './style.css';
+import { User } from "./models/User";
+import "./style.css";
 
-const user = new User({ name: 'mehmet', age: 30 });
+const user = User.buildUser({ id: 3 });
+user.on("change", () => console.log(user));
+user.fetch();
