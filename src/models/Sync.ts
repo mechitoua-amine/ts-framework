@@ -1,22 +1,23 @@
-import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosPromise } from 'axios';
 
-export class Sync {
-  url = 'http://localhost:3000/users';
+interface HasId {
+  id?: number;
+}
 
-  fetch(): void {
-    axios
-      .get(`${this.url}/${this.get('id')}`)
-      .then((response: AxiosResponse): void => {
-        this.set(response.data);
-      });
+export class Sync<T extends HasId> {
+  constructor(public rootUrl: string) {}
+
+  fetch(id: number): AxiosPromise {
+    return axios.get(`${this.rootUrl}/${id}`);
   }
 
-  save(): void {
-    const id = this.get('id');
+  save(data: T): AxiosPromise {
+    const { id } = data;
+
     if (id) {
-      axios.put(`${this.url}/${id}`, this.data);
+      return axios.put(`${this.rootUrl}/${id}`, data);
     } else {
-      axios.post(this.url, this.data);
+      return axios.post(this.rootUrl, data);
     }
   }
 }
