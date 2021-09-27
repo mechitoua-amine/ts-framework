@@ -3,5 +3,10 @@ import "./style.css";
 import { UserFrom } from "./views/UserForm";
 
 const user = User.buildUser({ name: "Name", age: 20 });
-const userFrom = new UserFrom(document.getElementById("root"), user);
-userFrom.render();
+const root = document.getElementById("root");
+if (root) {
+  const userFrom = new UserFrom(root, user);
+  userFrom.render();
+} else {
+  throw new Error("Root Element Not Found!");
+}
